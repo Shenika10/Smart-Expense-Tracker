@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Expense - Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="{% static 'expenses/style.css' %}">
+
+    <style>
+        .form-container {
+            background-color: white;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .form-container p {
+            margin-bottom: 18px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .save-button {
+            background-color: #27ae60;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2980b9;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1>Smart Expense Tracker</h1>
+
+        <a class="logout" href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </div>
+
+    <div class="form-container">
+
+        <h2>➕ Add New Expense</h2>
+
+        <p>Enter the details of your expense below.</p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button class="save-button" type="submit">
+                Save Expense
+            </button>
+
+        </form>
+
+        <a class="back-button" href="{% url 'dashboard' %}">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+
+</html>
